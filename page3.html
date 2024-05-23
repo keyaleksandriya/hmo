@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/jpg" href="hmo.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Page 3</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color:peachpuff;
+        }
+
+        .container {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #textbox {
+            margin-bottom: 10px;
+            height: 200px;
+            width: 400px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            height: 100px;
+            margin-top: 50px;
+            margin-right: 20px;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+    <div class="container">
+        <h1>Text-to-Speech</h1>
+        <textarea id="textbox" placeholder="Type what you want to say..."></textarea>
+        <button class="speak-button">Speak</button>
+        <button class="back-button">Back</button>
+    </div>
+
+    <script>
+        const textbox = document.getElementById("textbox");
+        const speakButton = document.querySelector(".speak-button");
+        const backButton = document.querySelector(".back-button");
+
+        speakButton.addEventListener("click", () => {
+            const msg = new SpeechSynthesisUtterance(textbox.value);
+            window.speechSynthesis.speak(msg);
+        });
+        backButton.addEventListener("click", () => {
+            window.history.back();
+        });
+      </script>
+</body>
+</html>
